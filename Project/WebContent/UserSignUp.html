@@ -2,15 +2,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>新規登録</title>
 </head>
 <body>
-   <div class="imput">
-	    <p>ログインID　　<input type="text" name="userId"><br>
-	    パスワード　　<input type="password" name="password1"><br>
-	    パスワード(確認)　　<input type="password" name="password2"><br>
-	    ユーザー名　　<input type="text" name="userName"><br>
-	    生年月日　　<input type="text" name="birth"><br></p>
-    </div>
+   <div class="form-wrapper">
+	   <h1>ユーザ新規登録</h1>
+	   	<form>
+		   <div class="ID">
+		     <label for="ID"></label>
+		     <input type="text" name="ログインID" required="required" placeholder="ログインID"></input>
+		   </div>
+		   <div class="password1">
+		      <label for="password1"></label>
+		      <input type="password" name="パスワード" required="required" placeholder="パスワード"></input>
+		   </div>
+		   <div class="password2">
+			<label for="password2"></label>
+			<input type="password" name="パスワード(確認)" required="required" placeholder="パスワード(確認)"></input>
+		   </div>
+		   <div class="user_name">
+		     <label for="user_name"></label>
+		     <input type="text" name="ユーザ名" required="required" placeholder="ユーザ名"></input>
+		   </div>
+		   <div class="Birthday">
+		     <label for="Birthday"></label>
+		     <input type="text" name="生年月日" required="required" placeholder="生年月日"></input>
+		   </div>
+		   	 <div class="button">
+		     <input type="submit" class="button" title="ログイン" value="ログイン"></input>
+		   </div>
+	   </form>
+   </div>
 </body>
 </html>
