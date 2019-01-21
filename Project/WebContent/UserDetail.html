@@ -7,34 +7,37 @@
 	</head>
 	<body>
 	<div class="form-wrapper">
-	  <h1>ユーザ一覧</h1>
+    <header><h1>ユーザ名さん　<a href="UserManagement.html">ログアウト</a></h1></header>
+	  <h2>ユーザ一覧</h2>
 	  <form>
-	    <div class="戻る">
-		  		 <p><a href="UserDetail.html">新規登録</a></p>
+	    <div class="新規登録">
+		  		 <p><a href="UserSignUp.html">新規登録</a></p>
 	  		   </div>
 	    <div class="form-item">
-	      <label for="text"></label>
+	      <label for="ID"></label>
 	      <input type="text" name="ログインID" required="required" placeholder="ログインID"></input>
 	    </div>
 	    <div class="form-item">
 			     <label for="user_name"></label>
 			     <input type="text" name="ユーザ名" required="required" placeholder="ユーザ名"></input>
 		</div>
-	    <div class="form-item">
-			     <label for="Birthday"></label>
-			     <input type="text" name="生年月日" required="required" placeholder="生年月日"></input>
-		</div>
-		<h2>〜</h2>
-		<div class="form-item">
-			     <label for="Birthday"></label>
-			     <input type="text" name="生年月日" required="required" placeholder="生年月日"></input>
-		</div>
+		<h3>生年月日</h3>
+	    	<div class="Birthdays">
+	    		<div class="form">
+					     <label for="Birthday1"></label>
+					     <input type="text" name="生年月日" required="required" placeholder="年/月/日"></input>
+				</div>
+				<h4>〜</h4>
+				<div class="form">
+					     <label for="Birthday2"></label>
+					     <input type="text" name="生年月日" required="required" placeholder="年/月/日"></input>
+				</div>
+			</div>
 	    <div class="button-panel">
 	      <input type="submit" class="button" title="検索" value="検索"></input>
 	    </div>
 	  </form>
-	</div>
-	<hr>
+	  <hr>
 		<table class="msr_table02">
 		  <thead>
 		    <tr>
@@ -72,5 +75,6 @@
 		    </tr>
 		  </tbody>
 		</table>
+	</div>
 	</body>
 </html>
