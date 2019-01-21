@@ -43,6 +43,9 @@ h3 {
   text-align: left;
   padding: 1.5em 0;
 }
+.Birthday1{
+	float: left;
+}
 .新規登録 {
   margin: 0 0 0 auto;
   width: 12%;
@@ -55,7 +58,9 @@ form {
   margin-bottom: 0.75em;
   width: 100%;
 }
-
+.h4{
+	margin: 10px 10px 10px 10px;
+}
 .form-item input {
   background: #fafafa;
   border: none;
@@ -139,7 +144,7 @@ form {
   background-color: #E6E6E6;
   font-size: 13px;
   padding: 3px;
-  vertical-align: middle;
+  vertical-align: top;
 }
 
 /* tr奇数番号のth設定 */
