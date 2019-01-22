@@ -1,3 +1,4 @@
+
 package contoroller;
 
 import java.io.IOException;
@@ -8,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 /**
  * Servlet implementation class userManagementServlet
  */
@@ -29,7 +29,7 @@ public class userManagementServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserManagement.jsp");
 				dispatcher.forward(request, response);
 			}
 	/**

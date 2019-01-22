@@ -1,0 +1,47 @@
+
+/* Simple Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #e9e9e9;
+  color: #5e5e5e;
+  font: 400 87.5%/1.9em 'Open Sans', sans-serif;
+}
+
+/* Form Layout */
+.form-wrapper {
+  background: #fafafa;
+  margin: 3em auto;
+  max-width: 450px;
+}
+header {
+	width: 100%;
+	height:2em;	/*背景画像のサイズに合わせてボックスの高さを指定*/
+	background-color:#df7c95;		/*ヘッダ部分の背景色*/
+}
+h1 {
+	color:#FCFCFF;
+	font-size:110%;
+	padding:5px 0px 0px 10px;		/*見出し内容の位置調整*/
+	font-family:Arial, Helvetica, sans-serif;	/*フォントの種類*/
+	text-align: right;
+}
+h2 {
+  text-align: center;
+  padding: 1em 0;
+}
+
+.text{
+	text-align:center;
+	margin-bottom: 10px;
+}
+
+.text h3, .text span{
+	display:inline-block;
+	text-align:left;
+	width:12em;
+}
+.戻る{
+    padding-left: 10px;
+    padding-top: 20px;
+}

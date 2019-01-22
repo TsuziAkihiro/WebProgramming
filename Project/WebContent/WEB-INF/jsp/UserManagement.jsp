@@ -1,12 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 	<head>
 		<meta charset="UTF-8">
 		<title>ログイン</title>
 		<link rel="stylesheet" type="text/css" href="css/UserManagement.css">
 	</head>
-	<body>
-	<div class="form-wrapper">
+<body>
+<div class="form-wrapper">
 	  <h1>ユーザ管理システム</h1>
 	  <form>
 	    <div class="form-item">
@@ -21,6 +23,6 @@
 	      <input type="submit" class="button" title="ログイン" value="ログイン"></input>
 	    </div>
 	  </form>
-	</div>
-	</body>
+</div>
+</body>
 </html>
