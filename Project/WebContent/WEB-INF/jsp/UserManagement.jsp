@@ -13,11 +13,11 @@
 	  <form>
 	    <div class="form-item">
 	      <label for="text"></label>
-	      <input type="text" name="ログインID" required="required" placeholder="ログインID"></input>
+	      <input type="text" name="ログインID" placeholder="ログインID"></input>
 	    </div>
 	    <div class="form-item">
 	      <label for="password"></label>
-	      <input type="password" name="パスワード" required="required" placeholder="パスワード"></input>
+	      <input type="password" name="パスワード" placeholder="パスワード"></input>
 	    </div>
 	    <div class="button-panel">
 	      <input type="submit" class="button" title="ログイン" value="ログイン"></input>

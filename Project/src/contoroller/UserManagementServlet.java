@@ -17,13 +17,13 @@ import model.User;
  * Servlet implementation class userManagementServlet
  */
 @WebServlet("/userManagementServlet")
-public class userManagementServlet extends HttpServlet {
+public class UserManagementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public userManagementServlet() {
+    public UserManagementServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -52,8 +52,6 @@ public class userManagementServlet extends HttpServlet {
 		UserDao userDao = new UserDao();
 		User user = userDao.findByLoginInfo(loginId, password);
 
-	}
-
 	/** テーブルに該当のデータが見つからなかった場合 **/
 	if (user == null) {
 		// リクエストスコープにエラーメッセージをセット
@@ -70,7 +68,7 @@ public class userManagementServlet extends HttpServlet {
 	session.setAttribute("userInfo", user);
 
 	// ユーザ一覧のサーブレットにリダイレクト
-	response.sendRedirect("UserListServlet");
+	response.sendRedirect("UserDetailServlet");
 
 }
 
