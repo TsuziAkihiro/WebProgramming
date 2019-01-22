@@ -17,13 +17,13 @@ import model.User;
  * Servlet implementation class UserDetail
  */
 @WebServlet("/UserDetail")
-public class UserDetailServlet extends HttpServlet {
+public class UserListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserDetailServlet() {
+    public UserListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

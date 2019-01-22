@@ -1,3 +1,4 @@
+
 package contoroller;
 
 import java.io.IOException;
@@ -12,9 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
 import model.User;
-
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class userManagementServlet
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -31,19 +31,18 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO 未実装：ログインセッションがある場合、ユーザ一覧画面にリダイレクトさせる
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-				// フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
+		// フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 				dispatcher.forward(request, response);
 			}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// リクエストパラメータの文字コードを指定
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+        // リクエストパラメータの文字コードを指定
         request.setCharacterEncoding("UTF-8");
 
 		// リクエストパラメータの入力項目を取得
@@ -54,23 +53,24 @@ public class LoginServlet extends HttpServlet {
 		UserDao userDao = new UserDao();
 		User user = userDao.findByLoginInfo(loginId, password);
 
-		/** テーブルに該当のデータが見つからなかった場合 **/
-		if (user == null) {
-			// リクエストスコープにエラーメッセージをセット
-			request.setAttribute("errMsg", "ログインに失敗しました。");
+	/** テーブルに該当のデータが見つからなかった場合 **/
+	if (user == null) {
+		// リクエストスコープにエラーメッセージをセット
+		request.setAttribute("errMsg", "ログインに失敗しました。");
 
-			// ログインjspにフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserManagement.jsp");
-			dispatcher.forward(request, response);
-			return;
-		}
-
-		/** テーブルに該当のデータが見つかった場合 **/
-		// セッションにユーザの情報をセット
-		HttpSession session = request.getSession();
-		session.setAttribute("userInfo", user);
-
-		// ユーザ一覧のサーブレットにリダイレクト
-		response.sendRedirect("UserDetailServlet");
+		// ログインjspにフォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
+		dispatcher.forward(request, response);
+		return;
 	}
+	/** テーブルに該当のデータが見つかった場合 **/
+	// セッションにユーザの情報をセット
+	HttpSession session = request.getSession();
+	session.setAttribute("userInfo", user);
+
+	// ユーザ一覧のサーブレットにリダイレクト
+	response.sendRedirect("UserListServlet");
+
+}
+
 }
