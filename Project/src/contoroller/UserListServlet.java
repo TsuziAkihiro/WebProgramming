@@ -42,7 +42,7 @@ public class UserListServlet extends HttpServlet {
 		request.setAttribute("userList", userList);
 
 		// ユーザ一覧のjspにフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserDetail.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserList.jsp");
 		dispatcher.forward(request, response);
 	}
 	/**

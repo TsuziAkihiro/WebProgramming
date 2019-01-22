@@ -33,6 +33,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		// TODO 未実装：ログインセッションがある場合、ユーザ一覧画面にリダイレクトさせる
+
 		// フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 				dispatcher.forward(request, response);
@@ -70,7 +72,5 @@ public class LoginServlet extends HttpServlet {
 
 	// ユーザ一覧のサーブレットにリダイレクト
 	response.sendRedirect("UserListServlet");
-
 }
-
 }

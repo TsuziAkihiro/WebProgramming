@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>ユーザ一覧</title>
-		<link rel="stylesheet" type="text/css" href="css/UserDetail.css">
+		<link rel="stylesheet" type="text/css" href="css/UserList.css">
 	</head>
 	<body>
 		<div class="form-wrapper">
