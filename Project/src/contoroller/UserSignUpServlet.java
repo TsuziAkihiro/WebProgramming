@@ -53,8 +53,8 @@ public class UserSignUpServlet extends HttpServlet {
 
 		// リクエストパラメータの入力項目を取得
 		String loginId = request.getParameter("loginId");
-		String password = request.getParameter("password");
-		//String password = request.getParameter("password");
+		String passworda = request.getParameter("passworda");
+		String passwordb = request.getParameter("passwordb");
 		String name = request.getParameter("name");
 		String birthday = request.getParameter("birthday");
 
