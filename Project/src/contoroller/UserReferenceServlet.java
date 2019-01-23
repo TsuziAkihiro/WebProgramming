@@ -36,16 +36,19 @@ public class UserReferenceServlet extends HttpServlet {
 			response.sendRedirect("LoginServlet");
 			return;
 		}
+		// URLからGETパラメータとしてIDを受け取る
+		String id = request.getParameter("id");
+
+		// 確認用：idをコンソールに出力
+		System.out.println(id);
+
+		// TODO  未実装：idを引数にして、idに紐づくユーザ情報を出力する
+		request.setAttribute("id", id);
+
 		// フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserReference.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
 
 }
