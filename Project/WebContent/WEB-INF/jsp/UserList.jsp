@@ -11,11 +11,11 @@
 	</head>
 	<body>
 		<div class="form-wrapper">
-	    <header><h1>ユーザ名さん　<a href="UserManagement.html">ログアウト</a></h1></header>
+	    <header><h1>${userInfo.name}　さん　<a href="LogoutServlet">ログアウト</a></h1></header>
 		  <h2>ユーザ一覧</h2>
 		  <form>
 		    <div class="新規登録">
-			  		 <p><a href="UserSignUp.html">新規登録</a></p>
+			  		 <p><a href="UserSignUpServlet">新規登録</a></p>
 		  		   </div>
 		    <div class="form-item">
 		      <label for="ID"></label>
@@ -57,8 +57,8 @@
 			      <td>田中太郎</td>
 			      <td>1989年04月26日</td>
 			      <td><a href="UserReference.html" class="square_btn1">詳細</a>
-			     	　<a href="UserUpdate.html" class="square_btn2">更新</a>
-			      	　<a href="Userdelete.html" class="square_btn3">削除</a>
+			     	　<a href="UserUpdateServlet" class="square_btn2">更新</a>
+			      	　<a href="UserDeleteServlet" class="square_btn3">削除</a>
 			      </td>
 			    </tr>
 			    <tr>
@@ -66,16 +66,16 @@
 			      <td>佐藤二朗</td>
 			      <td>2001年11月12日</td>
 			      <td><a href="UserReference.html" class="square_btn1">詳細</a>
-			     	　<a href="UserUpdate.html" class="square_btn2">更新</a>
-			      	　<a href="Userdelete.html" class="square_btn3">削除</a></td>
+			     	　<a href="UserUpdateServlet" class="square_btn2">更新</a>
+			      	　<a href="UserDeleteServlet" class="square_btn3">削除</a></td>
 			    </tr>
 			    <tr>
 			      <td>id0003</td>
 			      <td>佐川真司</td>
 			      <td>2000年01月01日</td>
 			      <td><a href="UserReference.html" class="square_btn1">詳細</a>
-			     	　<a href="UserUpdate.html" class="square_btn2">更新</a>
-			      	　<a href="Userdelete.html" class="square_btn3">削除</a></td>
+			     	　<a href="UserUpdateServlet" class="square_btn2">更新</a>
+			      	　<a href="UserDeleteServlet" class="square_btn3">削除</a></td>
 			    </tr>
 			  </tbody>
 			</table>

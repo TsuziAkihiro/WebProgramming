@@ -23,7 +23,8 @@ public class LogoutServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
 		// ログイン時に保存したセッション内のユーザ情報を削除

@@ -1,13 +1,13 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
-
 /**
  * Userテーブルのデータを格納するためのBeans
  * @author takano
  *
  */
-public class User {
+public class User implements Serializable {
 	private int id;
 	private String loginId;
 	private String name;
