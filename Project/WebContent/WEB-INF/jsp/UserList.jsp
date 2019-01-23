@@ -9,8 +9,8 @@
 		<title>ユーザ一覧</title>
 		<link rel="stylesheet" type="text/css" href="css/UserList.css">
 	</head>
-	<body>
-		<div class="form-wrapper">
+<body>
+	<div class="form-wrapper">
 	    <header><h1>${userInfo.name}　さん　<a href="LogoutServlet">ログアウト</a></h1></header>
 		  <h2>ユーザ一覧</h2>
 		  <form>
@@ -52,31 +52,21 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  <c:forEach var="user" items="${userList}" >
 			    <tr>
-			      <td>id0001</td>
-			      <td>田中太郎</td>
-			      <td>1989年04月26日</td>
-			      <td><a href="UserReference.html" class="square_btn1">詳細</a>
+			      <td>${user.loginId}</td>
+			      <td>${user.name}</td>
+			      <td>${user.birthDate}</td>
+			      <td><a href="UserReferenceServlet" class="square_btn1">詳細</a>
+				  <c:if test = "${userInfo.loginId == 'admin'||userInfo.loginId == user.loginId}">
 			     	　<a href="UserUpdateServlet" class="square_btn2">更新</a>
+			        </c:if>
+			      <c:if test = "${userInfo.loginId == 'admin'}">
 			      	　<a href="UserDeleteServlet" class="square_btn3">削除</a>
+			      </c:if>
 			      </td>
 			    </tr>
-			    <tr>
-			      <td>id0002</td>
-			      <td>佐藤二朗</td>
-			      <td>2001年11月12日</td>
-			      <td><a href="UserReference.html" class="square_btn1">詳細</a>
-			     	　<a href="UserUpdateServlet" class="square_btn2">更新</a>
-			      	　<a href="UserDeleteServlet" class="square_btn3">削除</a></td>
-			    </tr>
-			    <tr>
-			      <td>id0003</td>
-			      <td>佐川真司</td>
-			      <td>2000年01月01日</td>
-			      <td><a href="UserReference.html" class="square_btn1">詳細</a>
-			     	　<a href="UserUpdateServlet" class="square_btn2">更新</a>
-			      	　<a href="UserDeleteServlet" class="square_btn3">削除</a></td>
-			    </tr>
+			    </c:forEach>
 			  </tbody>
 			</table>
 		</div>

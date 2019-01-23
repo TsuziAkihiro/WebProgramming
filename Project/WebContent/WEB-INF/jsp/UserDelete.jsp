@@ -19,7 +19,7 @@
 				   		本当に削除してよろしいでしょうか
 			   </div>
 			   <div class="button-panel">
-			     <input type="submit" class="button" onclick="UserListServlet" value="キャンセル"></input>
+			     <a type="submit" class="button" href="UserListServlet">キャンセル</a>
 			   </div>
 			   <div class="button-panel">
 			     <input type="submit" class="button" title="OK" value="OK"></input>
