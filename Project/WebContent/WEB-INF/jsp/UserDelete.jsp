@@ -28,6 +28,7 @@ User u = (User) request.getAttribute("user");
 			   <div class="button-panel">
 			     <input type="submit" class="button" title="OK" value="OK"></input>
 			   </div>
+			   <input type="hidden" name="id" value="<%= u.getId() %>">
 		   </form>
 	   </div>
 	</body>
