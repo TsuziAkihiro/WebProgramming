@@ -115,4 +115,99 @@ public class UserDao {
         }
         return userList;
     }
+    /**
+     * 新規登録
+     */
+    public void InsertUserDao (String loginId,String password,String name,String birthday){
+    	Connection conn = null;
+        try {
+            // データベースへ接続
+        	conn = DBManager.getConnection();
+            String sql = "INSERT INTO user(login_id, name, birth_date, password, create_date, update_date) VALUES (?, ?, ?, ?, now(),now())";
+            // INSERTを実行
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, loginId);
+            stmt.setString(2, name);
+            stmt.setString(3, birthday);
+            stmt.setString(4, password);
+            int result = stmt.executeUpdate();
+            // 追加された行数を出力
+            System.out.println(result);
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        	if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    /**
+     * 詳細
+     */
+    public User detailDao(String id){
+    	Connection conn = null;
+    	 try {
+             // データベースへ接続
+             conn = DBManager.getConnection();
+             String sql = "SELECT * FROM user WHERE id = ?";
+             // SELECTを実行し、結果表を取得
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            // 結果表に格納されたレコードの内容を
+            if(rs.next()){
+                int ida = rs.getInt("id");
+                String loginId = rs.getString("login_id");
+                String name = rs.getString("name");
+                Date birthDate = rs.getDate("birth_date");
+                String password = rs.getString("password");
+                String createDate = rs.getString("create_date");
+                String updateDate = rs.getString("update_date");
+                return  new User(ida, loginId, name, birthDate, password, createDate, updateDate);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+        }
+    	 return null;
+    }
+    public void deleteDao(String id){
+    	Connection conn = null;
+    	 try {
+             // データベースへ接続
+             conn = DBManager.getConnection();
+             String sql = "DELETE FROM user WHERE id = ?";
+             // SELECTを実行し、結果表を取得
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, id);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }

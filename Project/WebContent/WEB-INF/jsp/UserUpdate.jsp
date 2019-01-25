@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="model.User" %>
 <!DOCTYPE html>
 <html lang="ja">
 	<head>
@@ -9,33 +10,37 @@
 		<link rel="stylesheet" type="text/css" href="css/UserUpdate.css">
 	</head>
 	<body>
+<%
+// リクエストスコープからインスタンスを取得
+User u = (User) request.getAttribute("user");
+%>
 	   <div class="form-wrapper">
-	   	   	<c:if test="${errMsg != null}" >
-		    <div class="alert alert-danger" role="alert">
-			  ${errMsg}
-			</div>
-		</c:if>
 	       <header><h1>${userInfo.name}　さん  <a href="LogoutServlet">ログアウト</a></h1></header>
 		   <h2>ユーザ情報更新</h2>
+		   		<c:if test="${errMsg != null}" >
+		  			  <div class="alert alert-danger" role="alert">
+		    			<FONT color="#ff0000">${errMsg}</FONT>
+					  </div>
+				</c:if>
 		   	<form>
 			   <div class="form-item">
-			    <h3>ログインID:${userInfo.loginId}</h3>
+			    <h3>ログインID:<%= u.getLoginId() %></h3>
 			   </div>
 			   <div class="form-item">
 			      <label for="password1"></label>
-			      <input type="password" name="パスワード" required="required" placeholder="パスワード"></input>
+			      <input type="password" name="passworda" required="required" placeholder="パスワード"></input>
 			   </div>
 			   <div class="form-item">
 				<label for="password2"></label>
-				<input type="password" name="パスワード(確認)" required="required" placeholder="パスワード(確認)"></input>
+				<input type="password" name="passwordb" required="required" placeholder="パスワード(確認)"></input>
 			   </div>
 			   <div class="form-item">
 			     <label for="user_name"></label>
-			     <input type="text" name="ユーザ名" required="required" placeholder="ユーザ名"></input>
+			     <input type="text" name="name" required="required" placeholder="ユーザ名"></input>
 			   </div>
 			   <div class="form-item">
 			     <label for="Birthday"></label>
-			     <input type="text" name="生年月日" required="required" placeholder="生年月日"></input>
+			     <input type="text" name="birthday" required="required" placeholder="生年月日"></input>
 			   </div>
 			   	<div class="button-panel">
 			     <input type="submit" class="button" title="更新" value="更新"></input>

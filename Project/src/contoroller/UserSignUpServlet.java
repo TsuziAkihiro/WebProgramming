@@ -24,17 +24,16 @@ public class UserSignUpServlet extends HttpServlet {
      */
     public UserSignUpServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO 未実装：ログインセッションがない場合、ログイン画面にリダイレクトさせる
+
 		HttpSession session = request.getSession();
 		if(session.getAttribute("userInfo") == null) {
-		// ユーザ一覧のサーブレットにリダイレクト
+		// ログイン画面のサーブレットにリダイレクト
 			response.sendRedirect("LoginServlet");
 			return;
 		}
@@ -48,34 +47,33 @@ public class UserSignUpServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-        request.setCharacterEncoding("UTF-8");
 
+		request.setCharacterEncoding("UTF-8");
 		// リクエストパラメータの入力項目を取得
-		String loginId = request.getParameter("loginId");
+		String loginId = request.getParameter("loginID");
 		String passworda = request.getParameter("passworda");
 		String passwordb = request.getParameter("passwordb");
 		String name = request.getParameter("name");
 		String birthday = request.getParameter("birthday");
 
-		// リクエストパラメータの入力項目を引数に渡して、Daoのメソッドを実行
-		UserDao userDao = new UserDao();
-		//User user = userDao.findByLoginInfo(loginId, password,name,birthday);
+		boolean bool1 = loginId.isEmpty();
+		boolean bool2 = passworda.isEmpty();
+		boolean bool3 = passwordb.isEmpty();
+		boolean bool4 = name.isEmpty();
+		boolean bool5 = birthday.isEmpty();
 
-	/** テーブルに該当のデータが見つからなかった場合 **/
-//	if (user == null) {
-//		// リクエストスコープにエラーメッセージをセット
-//		request.setAttribute("errMsg", "ログインに失敗しました。");
-//
-//		// ログインjspにフォワード
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
-//		dispatcher.forward(request, response);
-//		return;
-//	}
-	/** テーブルに該当のデータが見つかった場合 **/
-	// セッションにユーザの情報をセット
-	HttpSession session = request.getSession();
-	//session.setAttribute("userInfo", user);
+		if(bool1|| bool2|| bool3|| bool4|| bool5|| !passworda.equals(passwordb)) {
+			// リクエストスコープにエラーメッセージをセット
+			request.setAttribute("errMsg", "入力された内容は正しくありません。");
+
+			// 新規登録jspにフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserSignUp.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+		/** 条件を満たした場合 **/
+		UserDao user = new UserDao();
+		user.InsertUserDao(loginId,passworda,name,birthday);
 
 	// ユーザ一覧のサーブレットにリダイレクト
 	response.sendRedirect("UserListServlet");

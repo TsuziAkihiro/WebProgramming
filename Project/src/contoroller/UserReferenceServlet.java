@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.UserDao;
+import model.User;
+
 /**
  * Servlet implementation class UserreferenceServlet
  */
@@ -41,12 +44,13 @@ public class UserReferenceServlet extends HttpServlet {
 
 		// 確認用：idをコンソールに出力
 		System.out.println(id);
-
-		// TODO  未実装：idを引数にして、idに紐づくユーザ情報を出力する
-		request.setAttribute("id", id);
+		UserDao dao = new UserDao();
+		User user = dao.detailDao(id);
+		request.setAttribute("user",user);
 
 		// フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserReference.jsp");
+		RequestDispatcher dispatcher =
+		request.getRequestDispatcher("/WEB-INF/jsp/UserReference.jsp");
 		dispatcher.forward(request, response);
 	}
 

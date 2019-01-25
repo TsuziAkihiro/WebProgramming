@@ -57,12 +57,12 @@
 			      <td>${user.loginId}</td>
 			      <td>${user.name}</td>
 			      <td>${user.birthDate}</td>
-			      <td><a href="UserReferenceServlet" class="square_btn1">詳細</a>
+			      <td><a href="UserReferenceServlet?id=${user.id}" class="square_btn1">詳細</a>
 				  <c:if test = "${userInfo.loginId == 'admin'||userInfo.loginId == user.loginId}">
-			     	　<a href="UserUpdateServlet" class="square_btn2">更新</a>
+			     	　<a href="UserUpdateServlet?id=${user.id}" class="square_btn2">更新</a>
 			        </c:if>
 			      <c:if test = "${userInfo.loginId == 'admin'}">
-			      	　<a href="UserDeleteServlet" class="square_btn3">削除</a>
+			      	　<a href="UserDeleteServlet?id=${user.id}" class="square_btn3">削除</a>
 			      </c:if>
 			      </td>
 			    </tr>
