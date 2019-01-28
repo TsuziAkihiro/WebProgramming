@@ -70,6 +70,7 @@ form {
 .button-panel {
   margin: 2em 0 0;
   width: 100%;
+  line-height: 45px;
 }
 
 .button-panel .button {
@@ -80,7 +81,6 @@ form {
   text-decoration: none;
   color: #fff;
   cursor: pointer;
-  height: 50px;
   text-align: center;
   vertical-align:middle;
   font-family: 'Open Sans', sans-serif;
@@ -89,8 +89,10 @@ form {
   text-transform: uppercase;
   transition: background 0.3s ease-in-out;
   width: 100%;
+  line-height: 45px;
 }
 
 .button:hover {
   background: #ef3050;
+  line-height: 45px;
 }

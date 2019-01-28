@@ -196,6 +196,10 @@ public class UserDao {
              // SELECTを実行し、結果表を取得
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, id);
+            int result = stmt.executeUpdate();
+            // 追加された行数を出力
+            System.out.println(result);
+            stmt.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -210,4 +214,87 @@ public class UserDao {
             }
         }
     }
+    public void upDateUserDao (String id,String password,String name,String birthday){
+    	Connection conn = null;
+        try {
+            // データベースへ接続
+        	conn = DBManager.getConnection();
+            String sql = "UPDATE user SET name = ?,birth_date = ?,password = ?,update_date = now() WHERE id = ?";
+            // INSERTを実行
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, name);
+            stmt.setString(2, birthday);
+            stmt.setString(3, password);
+            stmt.setString(4, id);
+            int result = stmt.executeUpdate();
+            // 追加された行数を出力
+            System.out.println(result);
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+        	if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    /**
+     * 入力された条件に合う情報を取得する
+     * @return
+     */
+    public List<User> findByInput(String loginID,String name1,String birthday1,String birthday2) {
+        Connection conn = null;
+        List<User> userList = new ArrayList<User>();
+
+        try {
+            // データベースへ接続
+            conn = DBManager.getConnection();
+
+            // SELECT文を準備
+            // TODO: 未実装：管理者以外を取得するようSQLを変更する
+            String sql = "SELECT * FROM user WHERE 2 <= id and login_id = ? and name LIKE '%?%' and birth_date >= '?' and birth_date <= '?'";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, loginID);
+            stmt.setString(2, name1);
+            stmt.setString(3, birthday1);
+            stmt.setString(4, birthday2);
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // 結果表に格納されたレコードの内容を
+            // Userインスタンスに設定し、ArrayListインスタンスに追加
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String loginId = rs.getString("login_id");
+                String name = rs.getString("name");
+                Date birthDate = rs.getDate("birth_date");
+                String password = rs.getString("password");
+                String createDate = rs.getString("create_date");
+                String updateDate = rs.getString("update_date");
+                User user = new User(id, loginId, name, birthDate, password, createDate, updateDate);
+
+                userList.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+        }
+        return userList;
+    }
+
 }

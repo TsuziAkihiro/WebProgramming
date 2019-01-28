@@ -1,6 +1,10 @@
 package contoroller;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.bind.DatatypeConverter;
 
 import dao.UserDao;
 
@@ -73,7 +78,26 @@ public class UserSignUpServlet extends HttpServlet {
 		}
 		/** 条件を満たした場合 **/
 		UserDao user = new UserDao();
-		user.InsertUserDao(loginId,passworda,name,birthday);
+
+		//ハッシュを生成したい元の文字列
+		String source = passworda;
+		//ハッシュ生成前にバイト配列に置き換える際のCharset
+		Charset charset = StandardCharsets.UTF_8;
+		//ハッシュアルゴリズム
+		String algorithm = "MD5";
+
+		//ハッシュ生成処理
+		byte[] bytes = null;
+		try {
+			bytes = MessageDigest.getInstance(algorithm).digest(source.getBytes(charset));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		String result = DatatypeConverter.printHexBinary(bytes);
+		//標準出力
+		System.out.println(result);
+
+		user.InsertUserDao(loginId,result,name,birthday);
 
 	// ユーザ一覧のサーブレットにリダイレクト
 	response.sendRedirect("UserListServlet");

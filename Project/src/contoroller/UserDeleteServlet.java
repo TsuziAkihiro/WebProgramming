@@ -60,7 +60,7 @@ public class UserDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// URLからGETパラメータとしてIDを受け取る
+		// URLからPOSTパラメータとしてIDを受け取る
 		String id = request.getParameter("id");
 
 		UserDao user = new UserDao();

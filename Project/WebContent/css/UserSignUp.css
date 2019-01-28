@@ -82,3 +82,6 @@ form {
   background: #ef3050;
 }
 
+alert alert-danger{
+	text-align:center;
+}

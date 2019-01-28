@@ -14,7 +14,7 @@
 		   <h2>ユーザ新規登録</h2>
 		   	   	<c:if test="${errMsg != null}" >
 		  			  <div class="alert alert-danger" role="alert">
-		    			<FONT color="#ff0000">${errMsg}</FONT>
+		    			<FONT color="#ff0000" >${errMsg}</FONT>
 					  </div>
 				</c:if>
 		   	<form action="UserSignUpServlet" method="post">

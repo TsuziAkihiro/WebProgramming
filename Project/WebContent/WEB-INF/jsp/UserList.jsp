@@ -13,28 +13,28 @@
 	<div class="form-wrapper">
 	    <header><h1>${userInfo.name}　さん　<a href="LogoutServlet">ログアウト</a></h1></header>
 		  <h2>ユーザ一覧</h2>
-		  <form>
+		  <form action="UserListServlet" method="post">
 		    <div class="新規登録">
 			  		 <p><a href="UserSignUpServlet">新規登録</a></p>
 		  		   </div>
 		    <div class="form-item">
 		      <label for="ID"></label>
-		      <input type="text" name="ログインID" required="required" placeholder="ログインID"></input>
+		      <input type="text" name="loginID" placeholder="ログインID"></input>
 		    </div>
 		    <div class="form-item">
 				     <label for="user_name"></label>
-				     <input type="text" name="ユーザ名" required="required" placeholder="ユーザ名"></input>
+				     <input type="text" name="name" placeholder="ユーザ名"></input>
 			</div>
 			<h3>生年月日</h3>
 		    	<div class="Birthdays">
 		    		<div class="form">
 						     <label for="Birthday1"></label>
-						     <input type="text" name="生年月日" required="required" placeholder="年/月/日"></input>
+						     <input type="text" name="birthday1" placeholder="年/月/日"></input>
 					</div>
 					<h4>〜</h4>
 					<div class="form">
 						     <label for="Birthday2"></label>
-						     <input type="text" name="生年月日" required="required" placeholder="年/月/日"></input>
+						     <input type="text" name="birthday2" placeholder="年/月/日"></input>
 					</div>
 				</div>
 		    <div class="button-panel">
