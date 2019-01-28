@@ -115,6 +115,7 @@ public class UserDao {
         }
         return userList;
     }
+
     /**
      * 新規登録
      */
@@ -250,19 +251,33 @@ public class UserDao {
         Connection conn = null;
         List<User> userList = new ArrayList<User>();
 
+		boolean bool1 = loginID.isEmpty();
+		boolean bool2 = name1.isEmpty();
+		boolean bool3 = birthday1.isEmpty();
+		boolean bool4 = birthday2.isEmpty();
+
         try {
             // データベースへ接続
             conn = DBManager.getConnection();
 
             // SELECT文を準備
             // TODO: 未実装：管理者以外を取得するようSQLを変更する
-            String sql = "SELECT * FROM user WHERE 2 <= id and login_id = ? and name LIKE '%?%' and birth_date >= '?' and birth_date <= '?'";
+            String sql = "SELECT * FROM user WHERE 2 <= id";
 
+
+            if(bool1 == false) {
+            	sql += " and login_id = '"+loginID+"' ";
+            }
+            if(bool2 == false) {
+            	sql += " and name LIKE '%' '"+name1+"' '%' ";
+            }
+            if(bool3 == false) {
+            	sql += " and birth_date >= '"+birthday1+"' ";
+            }
+            if(bool4 == false) {
+            	sql += " and birth_date <= '"+birthday2+"' ";
+            }
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, loginID);
-            stmt.setString(2, name1);
-            stmt.setString(3, birthday1);
-            stmt.setString(4, birthday2);
 
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -296,5 +311,42 @@ public class UserDao {
         }
         return userList;
     }
+    public String cheak(String loginId){
+    	 Connection conn = null;
+        try {
+            // データベースへ接続
+            conn = DBManager.getConnection();
 
+            // SELECT文を準備
+            // TODO: 未実装：管理者以外を取得するようSQLを変更する
+            String sql = "SELECT * FROM user WHERE 2 <= id and login_id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, loginId);
+
+             // SELECTを実行し、結果表を取得
+            ResultSet rs = stmt.executeQuery();
+
+            // 結果表に格納されたレコードの内容を
+            // Userインスタンスに設定し、ArrayListインスタンスに追加
+            while (rs.next()) {
+                String loginID = rs.getString("login_id");
+
+                return loginID;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            // データベース切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+        }
+        return null;
+    }
 }

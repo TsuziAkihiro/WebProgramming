@@ -66,8 +66,10 @@ public class UserSignUpServlet extends HttpServlet {
 		boolean bool3 = passwordb.isEmpty();
 		boolean bool4 = name.isEmpty();
 		boolean bool5 = birthday.isEmpty();
+		UserDao user = new UserDao();
+		boolean bool6 = user.cheak(loginId) == null;
 
-		if(bool1|| bool2|| bool3|| bool4|| bool5|| !passworda.equals(passwordb)) {
+		if(bool1|| bool2|| bool3|| bool4|| bool5|| !passworda.equals(passwordb)||bool6 == false) {
 			// リクエストスコープにエラーメッセージをセット
 			request.setAttribute("errMsg", "入力された内容は正しくありません。");
 
@@ -76,9 +78,6 @@ public class UserSignUpServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		}
-		/** 条件を満たした場合 **/
-		UserDao user = new UserDao();
-
 		//ハッシュを生成したい元の文字列
 		String source = passworda;
 		//ハッシュ生成前にバイト配列に置き換える際のCharset

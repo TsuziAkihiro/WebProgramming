@@ -26,7 +26,7 @@ User u = (User) request.getAttribute("user");
 			     <a type="submit" class="button" href="UserListServlet">キャンセル</a>
 			   </div>
 			   <div class="button-panel">
-			     <input type="submit" class="button" title="OK" value="OK"></input>
+			     <input type="submit" class="button" title="OK" value="OK" onclick='return confirm("本当に削除しますか？");'/></input>
 			   </div>
 			   <input type="hidden" name="id" value="<%= u.getId() %>">
 		   </form>

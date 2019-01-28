@@ -36,11 +36,11 @@ User u = (User) request.getAttribute("user");
 			   </div>
 			   <div class="form-item">
 			     <label for="user_name"></label>
-			     <input type="text" name="name" placeholder="ユーザ名"></input>
+			     <input type="text" name="name" placeholder="ユーザ名"value="<%= u.getName() %>"></input>
 			   </div>
 			   <div class="form-item">
 			     <label for="Birthday"></label>
-			     <input type="text" name="birthday" placeholder="生年月日"></input>
+			     <input type="text" name="birthday" placeholder="生年月日" value="<%= u.getBirthDate() %>"></input>
 			   </div>
 			   	<div class="button-panel">
 			     <input type="submit" class="button" title="更新" value="更新"></input>
